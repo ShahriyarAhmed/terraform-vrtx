@@ -5,13 +5,13 @@ required_version = ">= 1.3.0, < 2.0.0"
   }
 }
 provider "google" {
-  project = "qureos-mig-gke"
+  project = "test"
   region  = "us-west1"
 }
 
 module "Storage" {
     source = "./Storage"
-    project_name = "qureos-mig-gke"
+    project_name = "test"
 
 }
 
@@ -33,19 +33,19 @@ module "secret-db-credentials" {
 
 module "CloudSQL" {
   source = "./CloudSQL"
-  project_name = "qureos-mig-gke"
+  project_name = "test"
 }
 
 module "CloudRun" {
   source = "./CloudRun"
   vpc_connector_name = "n8n-vpc-connector"
-  project_id = "qureos-mig-gke"
+  project_id = "test"
   image = "n8nio/n8n"
   cloud_sql_instance = "n8n-db"
 }
 
 module "LoadBalancer" {
   source = "./LB"
-  project_id = "qureos-mig-gke"
+  project_id = "test"
   region="us-central-1"
 }

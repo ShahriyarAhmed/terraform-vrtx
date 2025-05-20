@@ -7,7 +7,7 @@ resource "google_project_iam_member" "this" {
  for_each = toset(var.role_list)
   role = each.key
   member = "serviceAccount:${google_service_account.this.email}"
-  project = "qureos-mig-gke"
+  project = "test"
 
   depends_on = [google_service_account.this]
 }
